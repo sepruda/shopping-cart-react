@@ -13,7 +13,7 @@ const ShopItem = props => (
                 <div className="text-center">
                     <button
                         className="btn btn-link btn-sm"
-                        onClick={props.addItemToWish}
+                        onClick={() => {props.addItemToWish(props.id)}}
                     >
                         Ønskeliste
                     </button>
@@ -37,7 +37,7 @@ const ShopItem = props => (
                 <div className="text-right">
                     <button
                         className="btn btn-primary btn-sm btn-block"
-                        onClick={props.buyItem}
+                        onClick={() => {props.buyShopItem(props.id)}}
                     >
                         Køb
                     </button>

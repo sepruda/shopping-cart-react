@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShopList = props => (
+const FlexList = props => (
     <div className="d-flex flex-wrap">{props.children}</div>
 );
-export default ShopList;
+export default FlexList;

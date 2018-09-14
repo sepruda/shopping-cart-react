@@ -1,17 +1,14 @@
 import React from "react";
-import ShopList from "./ShopList";
+import ShopList from "./FlexList";
 import ShopItem from "./ShopItem";
-
-// Fjern denne import, når du løser opgaven
-// og ændr "items" i markup'en med en prop
-import shopitems from "../data/shop_items";
+import PropTypes from "prop-types";
+import FlexList from "./FlexList";
 
 const ShopView = props => (
     <div className="border mt-3 p-2">
         <h4 className="border-bottom">Bøger</h4>
-        <ShopList>
-            {/* -------items børe være en prop * --------*/}
-            {shopitems.map(item => {
+        <FlexList>
+            {props.shopItems.map(item => {
                 return (
                     <ShopItem
                         id={item.id}
@@ -21,12 +18,17 @@ const ShopView = props => (
                         price={item.price}
                         subject={item.subject}
                         image={item.img}
+                        buyShopItem={props.buyShopItem}
+                        addItemToWish={props.addItemToWish}
                     />
                 );
             })}
-            {/* ------- items børe være en prop * --------*/}
-        </ShopList>
+        </FlexList>
     </div>
 );
+
+ShopView.propTypes = {
+    items: PropTypes.array.isRequired
+}
 
 export default ShopView;
