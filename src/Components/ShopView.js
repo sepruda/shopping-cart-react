@@ -1,34 +1,43 @@
 import React from "react";
-import ShopList from "./FlexList";
 import ShopItem from "./ShopItem";
 import PropTypes from "prop-types";
 import FlexList from "./FlexList";
+import ItemInfo from "./ItemInfo/ItemInfo";
+import Modal from './UI/Modal/Modal';
 
-const ShopView = props => (
+const ShopView = props => {
+    let itemInfo;
+    if (props.selectedItem) {
+    itemInfo = <ItemInfo item={props.selectedItem} />
+    }
+
+    return (
     <div className="border mt-3 p-2">
-        <h4 className="border-bottom">Bøger</h4>
+        <h4 className="border-bottom">Board Games</h4>
+        <Modal show={props.show} modalClosed={props.modalClosed}>
+            {itemInfo}
+        </Modal>
         <FlexList>
             {props.shopItems.map(item => {
                 return (
                     <ShopItem
-                        id={item.id}
-                        key={item.id}
-                        title={item.title}
-                        author={item.author}
+                        id={item.gameId}
+                        key={item.gameId}
+                        title={item.name}
                         price={item.price}
-                        subject={item.subject}
-                        image={item.img}
+                        image={item.thumbnail}
                         buyShopItem={props.buyShopItem}
-                        addItemToWish={props.addItemToWish}
+                        wishAddItem={props.wishAddItem}
+                        clicked={props.clicked}
                     />
                 );
             })}
         </FlexList>
     </div>
-);
+)};
 
 ShopView.propTypes = {
-    items: PropTypes.array.isRequired
+    shopItems: PropTypes.array.isRequired
 }
 
 export default ShopView;

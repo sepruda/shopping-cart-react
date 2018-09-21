@@ -1,26 +1,61 @@
-import items from "../data/shop_items"; 
-import { FILTER, SHOP_BUY_ITEM, SHOP_ADD_ITEM_TO_WISHLIST } from "../constants/action_types";
+// import items from "../data/shop_items"; 
+import { FILTER, 
+        BUY_ITEM, 
+        WISH_ADD_ITEM, 
+        CART_REMOVE_ITEM, 
+        FETCH_DATA_START, 
+        FETCH_DATA_RECEIVE, 
+        FETCH_DATA_FAIL, 
+        ITEM_SELECTED_HANDLER, 
+        FETCH_ITEM_DATA_RECEIVE, 
+        MODAL_CLOSE_HANDLER} from "../constants/action_types";
 
 const initialState = {
     filter: FILTER.ALL,
     shop: {
         cartItems: [],
         wishItems: [],
-        shopItems: [...items]
-    }
+        shopItems: []
+    },
+    isLoading: false,
+    error: null,
+    selectedItemId: null,
+    selectedItem: null,
+    showModal: false
 }
 
 export const shop_reducer = (state = initialState.shop, action) => {
     let currentItem = {};
 
     switch (action.type) {
-        case SHOP_BUY_ITEM:
-            currentItem = state.shopItems.filter(item => item.id == action.id)
+        case BUY_ITEM:
+            currentItem = state.shopItems.filter(item => item.id === action.id)
             return {...state, cartItems: [...state.cartItems, ...currentItem]};
-        case SHOP_ADD_ITEM_TO_WISHLIST:
-            currentItem = state.shopItems.filter(item => item.id == action.id)
-            return {...state, wishItems: [...state.wishItems, ...currentItem]};
-        default:
+        case WISH_ADD_ITEM:
+            currentItem = state.shopItems.filter(item => item.id === action.id)
+            if (state.wishItems.some(item => item.id === currentItem[0].id)) {
+                return state;
+            } else {
+                return {...state, wishItems: [...state.wishItems, ...currentItem]}; 
+            }
+        case CART_REMOVE_ITEM:
+            const index = state.cartItems.findIndex(item => item.id === action.id);
+            const new_cart_list = [...state.cartItems];
+            new_cart_list.splice(index, 1);
+            return {...state, cartItems: [...new_cart_list]};
+        case ITEM_SELECTED_HANDLER:
+            return {...state, selectedItemId: action.id};
+        case MODAL_CLOSE_HANDLER:
+            return {...state, showModal: false}
+        case FETCH_DATA_START:
+            return {...state, isLoading: true};
+        case FETCH_DATA_RECEIVE:
+            return {...state, shopItems: action.data, isLoading: false};
+        case FETCH_ITEM_DATA_RECEIVE:
+            return {...state, selectedItem: action.data, isLoading: false, showModal: true}
+        case FETCH_DATA_FAIL:
+            return {...state, isLoading: false, error: action.msg}
+            default:
             return state;
     }
 }

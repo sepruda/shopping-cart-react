@@ -1,21 +1,22 @@
 import React from "react";
 
 const ShopItem = props => (
-    <div className="card-group p-2 " style={{ width: "11rem" }}>
+    <div className="card-group p-2 " style={{ width: "13rem" }}>
         <div className="card">
             <img
                 className="card-img-top"
-                height="190"
+                // height="160px"
                 src={props.image}
                 alt="cover"
+                onClick={() => {props.clicked(props.id)}}
             />
             <div className="card-body p-2">
                 <div className="text-center">
                     <button
                         className="btn btn-link btn-sm"
-                        onClick={() => {props.addItemToWish(props.id)}}
+                        onClick={() => {props.wishAddItem(props.id)}}
                     >
-                        Ønskeliste
+                        Wish list
                     </button>
                 </div>
                 <h5 className="card-title">
@@ -39,7 +40,7 @@ const ShopItem = props => (
                         className="btn btn-primary btn-sm btn-block"
                         onClick={() => {props.buyShopItem(props.id)}}
                     >
-                        Køb
+                        Buy
                     </button>
                 </div>
             </div>

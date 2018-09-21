@@ -1,0 +1,17 @@
+.Description {
+    white-space: pre-line;
+    font-family: inherit;
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
+}
+
+.BuyButton {
+    float: right;
+    margin-right: 20%;
+    margin-top: 20px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+}
