@@ -30,6 +30,12 @@ export const cartRemoveItem = id => {
     }
 }
 
+export const cartModalHandler = () => {
+    return {
+        type: Type.CART_SHOW_MODAL
+    }
+}
+
 export const modalCloseHandler = () => {
     return {
         type: Type.MODAL_CLOSE_HANDLER

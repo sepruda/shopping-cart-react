@@ -8,6 +8,7 @@ export const BUY_ITEM = "BUY_ITEM";
 export const WISH_ADD_ITEM = "WISH_ADD_ITEM";
 export const WISH_REMOVE_ITEM = 'WISH_REMOVE_ITEM';
 export const CART_REMOVE_ITEM = "CART_REMOVE_ITEM";
+export const CART_SHOW_MODAL = 'CART_SHOW_MODAL';
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const FETCH_DATA_START = "FETCH_DATA_START";
 export const FETCH_DATA_RECEIVE = "FETCH_DATA_RECEIVE";

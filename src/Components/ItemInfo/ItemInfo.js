@@ -2,9 +2,9 @@ import React from 'react';
 
 import './ItemInfo.css';
 
-const itemInfo = ({item}) => {  
+const itemInfo = (props) => {  
     
-    let description = item.description
+    let description = props.item.description
         .replace(/&#10;/gm, '\n')
         .replace(/(&ldquo;)|(&rdquo;)|(&quot;)/gm, '"')
         .replace(/&rsquo;/gm, "'" )
@@ -18,21 +18,31 @@ const itemInfo = ({item}) => {
 
     return (
     <div className="item">
-        <img src={item.image} alt="game cover" />
-        <button className="BuyButton">Buy</button>
-        {/* Price: Use an array of plausible prices that is allocated to each game on render */}
-        <h2>{item.name}<span style={{fontSize: "0.6em"}}> ({item.yearPublished})</span></h2>
+        <img src={props.item.image} alt="game cover" />
+        <button 
+            className="btn btn-inline btn-primary btn-sm float-right m-2"
+            onClick={() => props.buyShopItem(props.item.gameId)}
+        >
+            Buy
+        </button>
+        <button 
+            className="btn btn-inline btn-outline-info btn-sm float-right m-2"
+            onClick={() => props.wishAddItem(props.item.gameId)}
+        >
+            Wish List
+        </button>
+        <h2>{props.item.name}<span style={{fontSize: "0.6em"}}> ({props.item.yearPublished})</span></h2>
         <ul>
-            <li>Players: {item.minPlayers}-{item.maxPlayers}</li>
-            <li>Playing Time: {item.playingTime} minutes</li>
-            <li>Rating: {item.averageRating.toFixed(1)}</li>
+            <li>Players: {props.item.minPlayers}-{props.item.maxPlayers}</li>
+            <li>Playing Time: {props.item.playingTime} minutes</li>
+            <li>Rating: {props.item.averageRating.toFixed(1)}</li>
         </ul>
         <h5>Description:</h5>
         <pre className="Description">{description}</pre>
-        {/* Use regex to clean html text */}
         <h5>Publishers: </h5>
-        {item.publishers.join(", ")}
+        {props.item.publishers.join(", ")}
     </div>
-)};
+    );
+};
 
-export default itemInfo
+export default itemInfo;

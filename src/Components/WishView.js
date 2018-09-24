@@ -11,7 +11,7 @@ const WishView = props => {
     const items = consolidateList([...props.wishItems]);
     return (
         <div className="border mt-3 p-2">
-            <h5 className="border-bottom border-dark">Ønskeliste</h5>
+            <h5 className="border-bottom border-dark">Wish List</h5>
             {items.map(item => {
                     return (
                         <WishItem

@@ -5,6 +5,4 @@ export const generatePrice = (games) => {
     games.map(game => {
         return game.price = prices[Math.floor(Math.random() * prices.length)];
     });
-    console.log(games);
-    
 }

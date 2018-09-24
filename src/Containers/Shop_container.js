@@ -7,7 +7,8 @@ import { buyItem,
         requestData, 
         itemSelectedHandler, 
         requestItemData, 
-        modalCloseHandler } from "../actions/action_creators";
+        modalCloseHandler,
+        cartModalHandler } from "../actions/action_creators";
 
 const mapStateToProps = state => {
     return {
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => {
         wishAddItem: id => dispatch(wishAddItem(id)),
         wishRemoveItem: id => dispatch(wishRemoveItem(id)),
         cartRemoveItem: id => dispatch(cartRemoveItem(id)),
+        cartModalHandler: () => dispatch(cartModalHandler()),
         requestData: () => dispatch(requestData()),
         requestItemData: () => dispatch(requestItemData()),
         itemSelectedHandler: id => dispatch(itemSelectedHandler(id)),

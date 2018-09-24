@@ -3,10 +3,6 @@ body {
     background-color: white;
 }
 
-.card:hover {
-    cursor: pointer;
-}
-
 .modal {
     position: fixed;
     z-index: 500;

@@ -6,9 +6,9 @@ const ShopItem = props => {
 
     return (
     <div className="card-group p-2" style={{width: "14rem"}}>
-        <div className="card" >
-            <div className="card-header">
-                {props.title}
+        <div className="card">
+            <div className="card-header text-center">
+                <h5>{props.title}</h5>
             </div>
             <img
                 className="card-img-top"
@@ -19,23 +19,25 @@ const ShopItem = props => {
                 style={{objectFit: "contain", objectPosition: "0, 0"}}
             />
             <div className="card-body p-2">
-                <div className="text-center">
                     <button
-                        className="btn btn-link btn-sm"
+                        className="btn btn-inline btn-outline-info btn-sm"
                         onClick={() => {props.wishAddItem(props.id)}}
                     >
                         Wish list
                     </button>
-                </div>
-                <p className="card-text">
-                    <small>{props.author}</small>
-                </p>
+                    <button 
+                        className="btn btn-inline btn-outline-info btn-sm float-right"
+                        onClick={() => {props.clicked(props.id)}}
+                    >
+                        Info
+                    </button>
             </div>
+            
 
             <div className="card-footer p-2 bg-white border-0 ">
                 <div className="text-right">
                     <span>
-                        <strong>kr. {props.price}</strong>
+                        <strong>DKK {props.price}</strong>
                     </span>
                 </div>
             </div>

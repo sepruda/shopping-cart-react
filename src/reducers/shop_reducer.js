@@ -3,6 +3,7 @@ import { FILTER,
         BUY_ITEM, 
         WISH_ADD_ITEM, 
         CART_REMOVE_ITEM, 
+        CART_SHOW_MODAL,
         FETCH_DATA_START, 
         FETCH_DATA_RECEIVE, 
         FETCH_DATA_FAIL, 
@@ -22,7 +23,7 @@ const initialState = {
     error: null,
     selectedItemId: null,
     selectedItem: null,
-    showModal: false
+    showModal: false,
 }
 
 export const shop_reducer = (state = initialState.shop, action) => {
@@ -50,10 +51,12 @@ export const shop_reducer = (state = initialState.shop, action) => {
             const new_cart_list = [...state.cartItems];
             new_cart_list.splice(index, 1);
             return {...state, cartItems: [...new_cart_list]};
+        case CART_SHOW_MODAL:
+            return {...state, showModal: !state.showModal}
         case ITEM_SELECTED_HANDLER:
-            return {...state, selectedItemId: action.id};
+            return {...state, selectedItemId: action.id, showModal: true};
         case MODAL_CLOSE_HANDLER:
-            return {...state, showModal: false}
+            return {...state, showModal: false, selectedItem: null}
         case FETCH_DATA_START:
             return {...state, isLoading: true};
         case FETCH_DATA_RECEIVE:
