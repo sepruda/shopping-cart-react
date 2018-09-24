@@ -1,11 +1,11 @@
 import React from "react";
-import ShopItem from "./ShopItem";
+import ShopItem from "./ShopItem/ShopItem";
 import PropTypes from "prop-types";
-import FlexList from "./FlexList";
 import ItemInfo from "./ItemInfo/ItemInfo";
 import Modal from './UI/Modal/Modal';
 
 const ShopView = props => {
+    
     let itemInfo;
     if (props.selectedItem) {
     itemInfo = <ItemInfo item={props.selectedItem} />
@@ -17,7 +17,7 @@ const ShopView = props => {
         <Modal show={props.show} modalClosed={props.modalClosed}>
             {itemInfo}
         </Modal>
-        <FlexList>
+        <div className="card-group">
             {props.shopItems.map(item => {
                 return (
                     <ShopItem
@@ -30,9 +30,10 @@ const ShopView = props => {
                         wishAddItem={props.wishAddItem}
                         clicked={props.clicked}
                     />
+
                 );
             })}
-        </FlexList>
+        </div>
     </div>
 )};
 

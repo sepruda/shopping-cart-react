@@ -5,7 +5,7 @@ const wishItem = props => (
         <button
             className="btn btn-sm btn-danger mr-1"
             onClick={(e) => {
-                props.removeItem(props.id);
+                props.removeItem(props.gameId);
             }}
         >
             &times;

@@ -45,6 +45,7 @@ class Shop extends Component {
                 <WishView 
                     wishItems={this.props.wishItems}
                     wishAddItem={this.props.wishAddItem}
+                    wishRemoveItem={this.props.wishRemoveItem}
                 />
             </div>
         </div>

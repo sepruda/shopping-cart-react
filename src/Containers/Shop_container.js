@@ -1,7 +1,8 @@
 import Shop from "../Components/Shop";
 import { connect } from 'react-redux';
 import { buyItem, 
-        wishAddItem, 
+        wishAddItem,
+        wishRemoveItem, 
         cartRemoveItem, 
         requestData, 
         itemSelectedHandler, 
@@ -27,6 +28,7 @@ const mapDispatchToProps = dispatch => {
     return {
         buyItem: id => dispatch(buyItem(id)),
         wishAddItem: id => dispatch(wishAddItem(id)),
+        wishRemoveItem: id => dispatch(wishRemoveItem(id)),
         cartRemoveItem: id => dispatch(cartRemoveItem(id)),
         requestData: () => dispatch(requestData()),
         requestItemData: () => dispatch(requestItemData()),

@@ -1,15 +1,24 @@
 import * as Type from '../constants/action_types';
 
+import { generatePrice } from './helper_functions/helper_functions';
+
 //Syncronous actions
 export const buyItem = id => {
     return {
         type: Type.BUY_ITEM,
-        id
+        id,
     }
 }
 export const wishAddItem = id => {
     return {
         type: Type.WISH_ADD_ITEM,
+        id
+    }
+}
+
+export const wishRemoveItem = id => {
+    return {
+        type: Type.WISH_REMOVE_ITEM,
         id
     }
 }
@@ -62,12 +71,12 @@ export const itemSelectedHandler = id => {
 }
 
 
-//Asyncronous actions
+//Asyncronous actions using middleware Thunk
 
 export const requestData = () => {
 
     return (dispatch) => {
-        
+
         dispatch(fetchDataStart());
 
         const url = "https://bgg-json.azurewebsites.net/hot";
@@ -76,7 +85,7 @@ export const requestData = () => {
                 return response.json();
             }).then(data => {
                 const games = data.slice(0, 10);
-                //console.log(JSON.stringify(data));
+                generatePrice(games);
                 dispatch(fetchDataReceive(games))
             }).catch(err => {
                 console.log('Fetch error :-(', err);

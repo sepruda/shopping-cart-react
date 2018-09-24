@@ -8,7 +8,8 @@ import { FILTER,
         FETCH_DATA_FAIL, 
         ITEM_SELECTED_HANDLER, 
         FETCH_ITEM_DATA_RECEIVE, 
-        MODAL_CLOSE_HANDLER} from "../constants/action_types";
+        MODAL_CLOSE_HANDLER,
+        WISH_REMOVE_ITEM} from "../constants/action_types";
 
 const initialState = {
     filter: FILTER.ALL,
@@ -26,20 +27,26 @@ const initialState = {
 
 export const shop_reducer = (state = initialState.shop, action) => {
     let currentItem = {};
+    let index = null;
 
     switch (action.type) {
         case BUY_ITEM:
-            currentItem = state.shopItems.filter(item => item.id === action.id)
+            currentItem = state.shopItems.filter(item => item.gameId === action.id)
             return {...state, cartItems: [...state.cartItems, ...currentItem]};
         case WISH_ADD_ITEM:
-            currentItem = state.shopItems.filter(item => item.id === action.id)
-            if (state.wishItems.some(item => item.id === currentItem[0].id)) {
+            currentItem = state.shopItems.filter(item => item.gameId === action.id)
+            if (state.wishItems.some(item => item.gameId === currentItem[0].gameId)) {
                 return state;
             } else {
                 return {...state, wishItems: [...state.wishItems, ...currentItem]}; 
             }
+        case WISH_REMOVE_ITEM:
+            index = state.wishItems.findIndex(item => item.gameId === action.id);
+            const new_wish_list = [...state.wishItems];
+            new_wish_list.splice(index, 1);
+            return {...state, wishItems: [...new_wish_list]};
         case CART_REMOVE_ITEM:
-            const index = state.cartItems.findIndex(item => item.id === action.id);
+            index = state.cartItems.findIndex(item => item.gameId === action.id);
             const new_cart_list = [...state.cartItems];
             new_cart_list.splice(index, 1);
             return {...state, cartItems: [...new_cart_list]};

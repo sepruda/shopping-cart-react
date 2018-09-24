@@ -9,7 +9,12 @@ const itemInfo = ({item}) => {
         .replace(/(&ldquo;)|(&rdquo;)|(&quot;)/gm, '"')
         .replace(/&rsquo;/gm, "'" )
         .replace(/&mdash;/gm, "— ")
-        .replace(/&hellip;/gm, "... ");
+        .replace(/&hellip;/gm, "... ")
+        .replace(/&bull;/gm, '•')
+        .replace(/&ouml;/gm, 'ö')
+        .replace(/&szlig;/gm, 'ß')
+        .replace(/&auml;/gm, 'ä')
+        .replace(/&uuml;/gm, 'ü');
 
     return (
     <div className="item">

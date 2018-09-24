@@ -5,11 +5,11 @@ import CartItem from "./CartItem";
 const consolidateList = items => {
     const list = {};
     items.map(item => {
-        if (list[item.id]) {
-            return list[item.id].quantity++;
+        if (list[item.gameId]) {
+            return list[item.gameId].quantity++;
         } else {
-            list[item.id] = item;
-            return list[item.id].quantity = 1;
+            list[item.gameId] = item;
+            return list[item.gameId].quantity = 1;
         }
     });
     return Object.values(list);
@@ -32,10 +32,10 @@ const CartView = props => {
                 {items.map(item => {
                     return (
                         <CartItem 
-                            key={item.id}
-                            title={item.title}
+                            key={item.gameId}
+                            title={item.name}
                             price={item.price}
-                            id={item.id}
+                            id={item.gameId}
                             quantity={item.quantity}
                             removeItem={props.removeItem}
                         />
