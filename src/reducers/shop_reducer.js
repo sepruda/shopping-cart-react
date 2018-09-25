@@ -10,6 +10,7 @@ import { FILTER,
         ITEM_SELECTED_HANDLER, 
         FETCH_ITEM_DATA_RECEIVE, 
         MODAL_CLOSE_HANDLER,
+        MODAL_SHOW_INFO,
         WISH_REMOVE_ITEM} from "../constants/action_types";
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
     selectedItemId: null,
     selectedItem: null,
     showModal: false,
+    currentModal: null
 }
 
 export const shop_reducer = (state = initialState.shop, action) => {
@@ -54,7 +56,7 @@ export const shop_reducer = (state = initialState.shop, action) => {
         case CART_SHOW_MODAL:
             return {...state, showModal: !state.showModal}
         case ITEM_SELECTED_HANDLER:
-            return {...state, selectedItemId: action.id, showModal: true};
+            return {...state, selectedItemId: action.id, showModal: true, currentModal: MODAL_SHOW_INFO };
         case MODAL_CLOSE_HANDLER:
             return {...state, showModal: false, selectedItem: null}
         case FETCH_DATA_START:

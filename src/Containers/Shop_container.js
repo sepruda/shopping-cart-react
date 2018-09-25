@@ -20,7 +20,8 @@ const mapStateToProps = state => {
         error: state.error,
         selectedItemId: state.selectedItemId,
         selectedItem: state.selectedItem,
-        showModal: state.showModal
+        showModal: state.showModal,
+        currentModal: state.currentModal
         }
 }
 

@@ -1,0 +1,21 @@
+.CartView {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 35%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    right: 0;
+    top: ;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    overflow-y: scroll;
+    max-height: 80%;
+}
+
+@media (max-width: 500px) {
+    .CartView {
+        width: 50%;
+    }
+}

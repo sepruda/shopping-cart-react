@@ -26,7 +26,7 @@ const ShopItem = props => {
                         Wish list
                     </button>
                     <button 
-                        className="btn btn-inline btn-outline-info btn-sm float-right"
+                        className="btn btn-inline btn-outline-warning btn-sm float-right"
                         onClick={() => {props.clicked(props.id)}}
                     >
                         Info
@@ -44,7 +44,7 @@ const ShopItem = props => {
             <div className="card-footer p-2">
                 <div>
                     <button
-                        className="btn btn-primary btn-sm btn-block"
+                        className="btn btn-success btn-sm btn-block"
                         onClick={() => {props.buyShopItem(props.id);}
                     }
                     >

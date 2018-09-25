@@ -90,7 +90,7 @@ export const requestData = () => {
             .then(response => {
                 return response.json();
             }).then(data => {
-                const games = data.slice(0, 10);
+                const games = data.slice(0, 12);
                 generatePrice(games);
                 dispatch(fetchDataReceive(games))
             }).catch(err => {

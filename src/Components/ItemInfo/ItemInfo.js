@@ -20,7 +20,7 @@ const itemInfo = (props) => {
     <div className="item">
         <img src={props.item.image} alt="game cover" />
         <button 
-            className="btn btn-inline btn-primary btn-sm float-right m-2"
+            className="btn btn-inline btn-success btn-sm float-right m-2"
             onClick={() => props.buyShopItem(props.item.gameId)}
         >
             Buy
