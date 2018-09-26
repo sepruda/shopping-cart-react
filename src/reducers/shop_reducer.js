@@ -14,7 +14,6 @@ import { FILTER,
         WISH_REMOVE_ITEM} from "../constants/action_types";
 
 const initialState = {
-    filter: FILTER.ALL,
     shop: {
         cartItems: [],
         wishItems: [],
@@ -24,8 +23,7 @@ const initialState = {
     error: null,
     selectedItemId: null,
     selectedItem: null,
-    showModal: false,
-    currentModal: null
+    showModal: false
 }
 
 export const shop_reducer = (state = initialState.shop, action) => {
